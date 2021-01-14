@@ -10,6 +10,16 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_screenutil: ^4.0.2+5
+  city_pickers: ^0.2.0
+  image_picker: ^0.6.7+21
+  flutter_spinkit: ^4.1.2+1
+  extended_image: ^1.5.0
+  flutter_qr_reader: ^1.0.3
+  flutter_picker: ^1.1.5
+  bot_toast: ^3.0.5
+  connectivity: ^2.0.2
+  dio: ^3.0.10
 
 dev_dependencies:
   flutter_test:
