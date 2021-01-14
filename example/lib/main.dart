@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:qz_ui_kit/qz_ui_kit.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qz_ui_kit/picker_image.dart';
 import 'package:qz_ui_kit/src/helper/city_picker.dart';
 void main() {
 
@@ -43,7 +41,7 @@ class _ExamplePageState extends State<ExamplePage> {
       ),
       body: RaisedButton(
         onPressed: () async {
-          pickerImage(context);
+          // pickerImage(context);
           cityPicker(context);
         },
         child: Text('picker image'),
