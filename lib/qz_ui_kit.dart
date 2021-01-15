@@ -1,18 +1,31 @@
 library qz_ui_kit;
 
-export 'src/scroller_view.dart';
-export 'src/tik_tok_loading.dart';
-export 'src/divider.dart';
-export 'src/action_sheet.dart';
-export 'src/decimal_range.dart';
-export 'src/custom_app_bar.dart';
-export 'src/custom_tab_bar_bottom.dart';
+export 'widgets/action_sheet.dart';
+export 'widgets/custom_app_bar.dart';
+export 'widgets/custom_back_button.dart';
+export 'widgets/decimal_range.dart';
+export 'widgets/dialog.dart';
+export 'widgets/divider.dart';
+export 'widgets/field.dart';
+export 'widgets/scroller_view.dart';
+export 'widgets/tik_tok_loading.dart';
 
-export 'src/helper/city_picker.dart';
-export 'src/helper/picker_image.dart';
-export 'src/helper/size_box_entension.dart';
-export 'src/helper/preview_page.dart';
-export 'src/helper/scan_page.dart';
-export 'src/helper/show_picker.dart';
 
-export 'src/http/index.dart';
+export 'helper/city_picker.dart';
+export 'helper/picker_image.dart';
+export 'helper/preview_page.dart';
+export 'helper/scan_page.dart';
+export 'helper/show_picker.dart';
+export 'helper/size_box_entension.dart';
+
+export 'http/index.dart';
+
+export 'mixins/time_util.dart';
+export 'mixins/double_click_exit.dart';
+
+export 'utils/as_type.dart';
+export 'utils/capture.dart';
+export 'utils/handler_copy.dart';
+export 'utils/hide_string.dart';
+export 'utils/jwt.dart';
+export 'utils/toast.dart';

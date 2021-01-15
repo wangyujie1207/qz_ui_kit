@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
-import 'package:qz_ui_kit/src/utils/toast.dart';
+
+import '../qz_ui_kit.dart';
 
 void handlerCopy(String text) {
   if (text == null) return;

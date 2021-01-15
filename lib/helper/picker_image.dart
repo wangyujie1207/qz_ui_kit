@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../qz_ui_kit.dart';
+import '../qz_ui_kit.dart';
+
 
 
 Future<File> pickerImage(BuildContext context) async {

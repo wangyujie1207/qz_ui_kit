@@ -1,4 +1,4 @@
-import 'package:qz_ui_kit/src/utils/toast.dart';
+import '../utils/toast.dart';
 
 mixin DoubleClickExit {
   DateTime lastPopTime;

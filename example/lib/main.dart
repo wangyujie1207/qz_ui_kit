@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qz_ui_kit/src/helper/city_picker.dart';
-void main() {
+import 'package:qz_ui_kit/helper/picker_image.dart';
+import 'package:qz_ui_kit/widgets/custom_app_bar.dart';
 
+void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget{
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -28,45 +29,48 @@ class ExamplePage extends StatefulWidget {
   _ExamplePageState createState() => _ExamplePageState();
 }
 
-class _ExamplePageState extends State<ExamplePage> {
+class _ExamplePageState extends State<ExamplePage>
+    with SingleTickerProviderStateMixin {
+  TabController tabController;
+
   @override
   void initState() {
     super.initState();
+
+    tabController = TabController(length: 2, vsync: this);
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('example'),
-      ),
-      body: RaisedButton(
-        onPressed: () async {
-          // pickerImage(context);
-          cityPicker(context);
-        },
-        child: Text('picker image'),
-      ),
-      // body: AppScrollView(
-      //   children: [
-      //     RaisedButton(
-      //       onPressed: () async {
-      //         // String result = await ActionSheet(
-      //         //   actions: [],
-      //         //   cancelText: "取消",
-      //         //   roundRadius: 10,
-      //         // ).show(context);
-      //       },
-      //       child: Text('action sheet'),
-      //     ),
-      //     20.w.vb,
-      //     RaisedButton(
-      //       onPressed: () async {
-      //         pickerImage(context);
-      //       },
-      //       child: Text('picker image'),
-      //     )
-      //   ],
-      // ),
-    );
+        appBar: CustomAppBar(title: '123'),
+        body: Container(
+          width: double.infinity,
+          height: double.infinity,
+          child: Column(
+            children: [
+              Container(
+                width: double.infinity,
+                height: 50.w,
+                color: Colors.white,
+                child: TabBar(
+                  controller: tabController,
+                  tabs: [Tab(text: 'tab1'), Tab(text: 'tab2')],
+                ),
+              ),
+              Expanded(
+                child: TabBarView(
+                  controller: tabController,
+                  children: [
+                    Center(child: RaisedButton(child: Text('123'),onPressed: (){
+                      pickerImage(context);
+                    },)),
+                    Center(child: Text('2')),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ));
   }
 }

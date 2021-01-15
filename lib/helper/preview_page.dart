@@ -1,7 +1,7 @@
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:qz_ui_kit/src/custom_back_button.dart';
+import '../widgets/custom_back_button.dart';
 
 class ImagePreview {
   final ImageProvider image;
