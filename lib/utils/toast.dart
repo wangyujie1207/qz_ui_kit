@@ -3,7 +3,7 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../helper/size_box_entension.dart';
 
-void showToast(String text, [int seconds = 3]) {
+void showToast(String text, [int seconds = 2]) {
   BotToast.showText(
       text: text,
       duration: Duration(seconds: seconds),
