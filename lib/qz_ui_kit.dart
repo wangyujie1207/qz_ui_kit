@@ -29,3 +29,4 @@ export 'utils/handler_copy.dart';
 export 'utils/hide_string.dart';
 export 'utils/jwt.dart';
 export 'utils/toast.dart';
+export 'utils/hide_keyboard.dart';
