@@ -1,3 +1,11 @@
-## [0.0.1] - TODO: Add release date.
-
-* TODO: Describe initial release.
+## 0.0.1
+    * 初次提交
+## 0.0.2
+    * 更新一波轮子
+## 0.0.3
+    * 修改部分bug
+## 0.0.4
+    * 添加button和旋转动画
+## 0.0.5
+    * picker组件加入background
+    * Field添加iconColor

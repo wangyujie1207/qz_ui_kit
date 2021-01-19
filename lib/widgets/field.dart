@@ -19,6 +19,7 @@ class Field extends StatefulWidget {
   final TextStyle hintStyle;
   final bool isDense;
   final bool showEyes;
+  final Color iconColor;
   final int maxLength;
   final TextStyle counterStyle;
   final ValueChanged<String> onSubmitted;
@@ -45,7 +46,8 @@ class Field extends StatefulWidget {
       this.maxLength,
       this.counterStyle,
       this.onSubmitted,
-      this.onChanged})
+      this.onChanged,
+      this.iconColor})
       : super(key: key);
 
   @override
@@ -81,7 +83,8 @@ class _FieldState extends State<Field> {
           widget.clearable && _isShowDelete
               ? GestureDetector(
                   child: Icon(Icons.cancel,
-                      size: 16.0, color: const Color(0xffc8c9cc)),
+                      size: 16.0,
+                      color: widget.iconColor ?? const Color(0xffc8c9cc)),
                   onTap: () {
                     widget.controller.text = '';
                   },
@@ -93,7 +96,7 @@ class _FieldState extends State<Field> {
                   child: Icon(
                       !_isShowPwd ? Icons.visibility_off : Icons.visibility,
                       size: 16.0,
-                      color: const Color(0xff969799)),
+                      color: widget.iconColor ?? const Color(0xff969799)),
                   onTap: () {
                     setState(() {
                       _isShowPwd = !_isShowPwd;
