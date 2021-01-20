@@ -9,3 +9,5 @@
 ## 0.0.5
     * picker组件加入background
     * Field添加iconColor
+## 0.0.6
+    * button 增加highlightColor

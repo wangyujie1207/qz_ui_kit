@@ -14,6 +14,7 @@ class Button extends StatelessWidget {
   final Color disabledColor;
   final Color disabledTextColor;
   final Color splashColor;
+  final Color highlightColor;
 
   const Button({
     Key key,
@@ -28,6 +29,7 @@ class Button extends StatelessWidget {
     this.disabledTextColor,
     this.splashColor,
     this.title,
+    this.highlightColor,
   }) : super(key: key);
 
   @override
@@ -46,6 +48,7 @@ class Button extends StatelessWidget {
         disabledColor: disabledColor,
         disabledTextColor: disabledTextColor,
         splashColor: splashColor,
+        highlightColor: highlightColor,
         padding: EdgeInsets.zero,
         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
         shape: RoundedRectangleBorder(
