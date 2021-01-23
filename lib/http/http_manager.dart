@@ -122,6 +122,7 @@ class HttpManager {
     _request(
       url: url,
       params: params,
+      options: options,
       method: GET,
       successCallback: successCallback,
       errorCallback: errorCallback,
@@ -152,6 +153,7 @@ class HttpManager {
       data: data,
       method: POST,
       params: params,
+      options: options,
       successCallback: successCallback,
       errorCallback: errorCallback,
       tag: tag,

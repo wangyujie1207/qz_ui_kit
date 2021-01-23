@@ -11,3 +11,4 @@
     * Field添加iconColor
 ## 0.0.6
     * button 增加highlightColor
+    * http manager options
