@@ -6,18 +6,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../qz_ui_kit.dart';
 
-
-
-Future<File> pickerImage(BuildContext context) async {
+Future<File> pickerImage(BuildContext context, List<ActionSheetItem> actionList,
+    {String cancel: '取消', Color cancelColor}) async {
   final ImagePicker _picker = ImagePicker();
 
-  final List<ActionSheetItem> actionList = [
-    ActionSheetItem(name: "相机", value: "camera"),
-    ActionSheetItem(name: "相册", value: "gallery"),
-  ];
-
-  String res =
-  await ActionSheet(actions: actionList, cancelText: "取消", roundRadius: 10.w)
+  String res = await ActionSheet(
+          actions: actionList,
+          cancelText: cancel,
+          roundRadius: 10.w,
+          cancelColor: cancelColor)
       .show(context);
   switch (res) {
     case 'camera':

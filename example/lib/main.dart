@@ -29,6 +29,10 @@ class ExamplePage extends StatefulWidget {
 }
 
 class _ExamplePageState extends State<ExamplePage> {
+  final List<ActionSheetItem> actionList = [
+    ActionSheetItem(name: '相机', value: "camera", color: Colors.red),
+    ActionSheetItem(name: '相册', value: "gallery"),
+  ];
   @override
   void initState() {
     super.initState();
@@ -42,77 +46,105 @@ class _ExamplePageState extends State<ExamplePage> {
           children: [
             CustomOutlineButton(
               // child: Text('test'),
-              title: 'outline',
-              onPressed: (){},
+              title: 'dialog test',
+              onPressed: () async {
+                await showDialog(
+                  context: context,
+                  builder: (_) {
+                    return NDialog(
+                      background: Colors.orange,
+                      cancelButtonColor: Colors.orange,
+                      confirmButtonColor: Colors.orange,
+                      contentColor: Colors.blue,
+                      borderColor: Colors.red,
+                      title: '温馨提示',
+                      message: '确定要取消该订单?',
+                      confirmButtonText: '确定',
+                      cancelButtonText: '取消',
+                      showCancelButton: true,
+                      closeOnClickOverlay: true,
+                      confirmTextColor: Theme.of(context).primaryColor,
+                      onConfirm: () {},
+                    );
+                  },
+                );
+              },
             ),
-            CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation(const Color(0xff106636)),
-              strokeWidth: 2.w,
+            CustomOutlineButton(
+              // child: Text('test'),
+              title: 'picker image',
+              onPressed: () async {
+                pickerImage(context, actionList, cancel: '取消', cancelColor: Colors.red);
+              },
             ),
-            Wrap(
-              spacing: 16.0,
-              alignment: WrapAlignment.center,
-              runSpacing: 16.0,
-              children: <Widget>[
-                AnimatedRotationBox(
-                  child: GradientCircularProgressIndicator(
-                    radius: 15.0,
-                    colors: [Colors.red[300], Colors.orange, Colors.grey[50]],
-                    value: .8,
-                    backgroundColor: Colors.transparent,
-                  ),
-                ),
-                AnimatedRotationBox(
-                  child: GradientCircularProgressIndicator(
-                    radius: 15.0,
-                    colors: [Colors.red, Colors.red],
-                    value: .7,
-                    backgroundColor: Colors.transparent,
-                  ),
-                ),
-                AnimatedRotationBox(
-                  duration: Duration(milliseconds: 800),
-                  child: GradientCircularProgressIndicator(
-                    radius: 15.0,
-                    colors: [Colors.blue, Colors.lightBlue[50]],
-                    value: .8,
-                    backgroundColor: Colors.transparent,
-                    strokeCapRound: true,
-                  ),
-                ),
-                // Icon
-                AnimatedRotationBox(
-                  duration: Duration(milliseconds: 800),
-                  child: Icon(Icons.loop),
-                ),
-                AnimatedRotationBox(
-                  duration: Duration(milliseconds: 800),
-                  child: Icon(Icons.add),
-                ),
-                AnimatedRotationBox(
-                  duration: Duration(milliseconds: 800),
-                  child: Icon(Icons.refresh),
-                ),
-                AnimatedRotationBox(
-                  child: GradientCircularProgressIndicator(
-                    colors: [
-                      Colors.red,
-                      Colors.amber,
-                      Colors.cyan,
-                      Colors.green[200],
-                      Colors.blue,
-                      Colors.red
-                    ],
-                    radius: 60.0,
-                    stokeWidth: 5.0,
-                    strokeCapRound: true,
-                    backgroundColor: Colors.transparent,
-                    value: 1.0,
-                  ),
-                ),
-
-              ],
-            ),
+            // CircularProgressIndicator(
+            //   valueColor: AlwaysStoppedAnimation(const Color(0xff106636)),
+            //   strokeWidth: 2.w,
+            // ),
+            // Wrap(
+            //   spacing: 16.0,
+            //   alignment: WrapAlignment.center,
+            //   runSpacing: 16.0,
+            //   children: <Widget>[
+            //     AnimatedRotationBox(
+            //       child: GradientCircularProgressIndicator(
+            //         radius: 15.0,
+            //         colors: [Colors.red[300], Colors.orange, Colors.grey[50]],
+            //         value: .8,
+            //         backgroundColor: Colors.transparent,
+            //       ),
+            //     ),
+            //     AnimatedRotationBox(
+            //       child: GradientCircularProgressIndicator(
+            //         radius: 15.0,
+            //         colors: [Colors.red, Colors.red],
+            //         value: .7,
+            //         backgroundColor: Colors.transparent,
+            //       ),
+            //     ),
+            //     AnimatedRotationBox(
+            //       duration: Duration(milliseconds: 800),
+            //       child: GradientCircularProgressIndicator(
+            //         radius: 15.0,
+            //         colors: [Colors.blue, Colors.lightBlue[50]],
+            //         value: .8,
+            //         backgroundColor: Colors.transparent,
+            //         strokeCapRound: true,
+            //       ),
+            //     ),
+            //     // Icon
+            //     AnimatedRotationBox(
+            //       duration: Duration(milliseconds: 800),
+            //       child: Icon(Icons.loop),
+            //     ),
+            //     AnimatedRotationBox(
+            //       duration: Duration(milliseconds: 800),
+            //       child: Icon(Icons.add),
+            //     ),
+            //     AnimatedRotationBox(
+            //       duration: Duration(milliseconds: 800),
+            //       child: Icon(Icons.refresh),
+            //     ),
+            //     AnimatedRotationBox(
+            //       child: GradientCircularProgressIndicator(
+            //         colors: [
+            //           Colors.red,
+            //           Colors.amber,
+            //           Colors.cyan,
+            //           Colors.green[200],
+            //           Colors.blue,
+            //           Colors.red
+            //         ],
+            //         radius: 60.0,
+            //         stokeWidth: 5.0,
+            //         strokeCapRound: true,
+            //         backgroundColor: Colors.transparent,
+            //         value: 1.0,
+            //       ),
+            //     ),
+            //
+            //   ],
+            // ),
           ],
         ));
   }

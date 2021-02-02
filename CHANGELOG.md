@@ -12,3 +12,7 @@
 ## 0.0.6
     * button 增加highlightColor
     * http manager options
+## 0.0.7
+    * pickerImage 传入list
+    * dialog 黑夜模式支持
+    * actionSheet 黑夜模式支持

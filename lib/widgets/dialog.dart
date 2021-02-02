@@ -53,25 +53,40 @@ class NDialog extends StatefulWidget {
   // 自定义内容
   final Widget child;
 
+  // 背景色
+  final Color background;
+
+  // border
+  final Color borderColor;
+
+  // 标题颜色
+  final Color titleColor;
+
+  // 内容颜色
+  final Color contentColor;
+
+
   const NDialog(
       {Key key,
-        this.title,
-        this.message,
-        this.titleAlign: AlignmentDirectional.center,
-        this.messageAlign: TextAlign.center,
-        this.showConfirmButton: true,
-        this.showCancelButton: false,
-        this.confirmButtonText: "确认",
-        this.confirmButtonColor: Colors.white,
-        this.confirmTextColor: const Color(0xff1989fa),
-        this.cancelButtonText: "取消",
-        this.cancelButtonColor: Colors.white,
-        this.cancelTextColor: const Color(0xff323233),
-        this.closeOnClickOverlay: false,
-        this.onConfirm,
-        this.onCancel,
-        this.beforeClose,
-        this.child})
+      this.title,
+      this.message,
+      this.titleAlign: AlignmentDirectional.center,
+      this.messageAlign: TextAlign.center,
+      this.showConfirmButton: true,
+      this.showCancelButton: false,
+      this.confirmButtonText: "确认",
+      this.confirmButtonColor: Colors.white,
+      this.confirmTextColor: const Color(0xff1989fa),
+      this.cancelButtonText: "取消",
+      this.cancelButtonColor: Colors.white,
+      this.cancelTextColor: const Color(0xff323233),
+      this.closeOnClickOverlay: false,
+      this.onConfirm,
+      this.onCancel,
+      this.beforeClose,
+      this.child,
+      this.background,
+      this.borderColor, this.titleColor, this.contentColor})
       : super(key: key);
 
   @override
@@ -115,7 +130,7 @@ class _NDialog extends State<NDialog> {
             child: InkWell(
                 onTap: hideDialog,
                 borderRadius:
-                BorderRadius.only(bottomLeft: Radius.circular(16)),
+                    BorderRadius.only(bottomLeft: Radius.circular(16)),
                 child: Container(
                     height: 50,
                     alignment: Alignment.center,
@@ -133,8 +148,8 @@ class _NDialog extends State<NDialog> {
             borderRadius: widget.showCancelButton
                 ? BorderRadius.only(bottomRight: Radius.circular(16))
                 : BorderRadius.only(
-                bottomLeft: Radius.circular(16),
-                bottomRight: Radius.circular(16))),
+                    bottomLeft: Radius.circular(16),
+                    bottomRight: Radius.circular(16))),
         child: Material(
           type: MaterialType.transparency,
           child: InkWell(
@@ -154,27 +169,27 @@ class _NDialog extends State<NDialog> {
               borderRadius: widget.showCancelButton
                   ? BorderRadius.only(bottomRight: Radius.circular(16))
                   : BorderRadius.only(
-                  bottomLeft: Radius.circular(16),
-                  bottomRight: Radius.circular(16)),
+                      bottomLeft: Radius.circular(16),
+                      bottomRight: Radius.circular(16)),
               child: Container(
                 height: 50,
                 alignment: Alignment.center,
                 child: _confirmLoading
                     ? SizedBox(
-                  width: 16,
-                  height: 16,
-                  child: CircularProgressIndicator(
-                    valueColor:
-                    AlwaysStoppedAnimation(widget.confirmTextColor),
-                    backgroundColor: widget.confirmButtonColor,
-                    strokeWidth: 1,
-                  ),
-                )
+                        width: 16,
+                        height: 16,
+                        child: CircularProgressIndicator(
+                          valueColor:
+                              AlwaysStoppedAnimation(widget.confirmTextColor),
+                          backgroundColor: widget.confirmButtonColor,
+                          strokeWidth: 1,
+                        ),
+                      )
                     : Text(widget.confirmButtonText,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: widget.confirmTextColor,
-                    )),
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: widget.confirmTextColor,
+                        )),
               )),
         ));
   }
@@ -182,20 +197,20 @@ class _NDialog extends State<NDialog> {
   Widget buildButtons() {
     return Container(
         child: Row(
-          children: <Widget>[
-            Expanded(
-                child: widget.showCancelButton ? buildCancelButton() : Text(''),
-                flex: widget.showCancelButton ? 1 : 0),
-            SizedBox(
-                width: widget.showCancelButton ? 1 : 0,
-                height: 50,
-                child: Container(color: Color(0xffebedf0))),
-            Expanded(
-                child:
+      children: <Widget>[
+        Expanded(
+            child: widget.showCancelButton ? buildCancelButton() : Text(''),
+            flex: widget.showCancelButton ? 1 : 0),
+        SizedBox(
+            width: widget.showCancelButton ? 1 : 0,
+            height: 50,
+            child: Container(color: widget.borderColor ?? Color(0xffebedf0))),
+        Expanded(
+            child:
                 widget.showConfirmButton ? buildConfirmButton() : Container(),
-                flex: widget.showConfirmButton ? 1 : 0),
-          ],
-        ));
+            flex: widget.showConfirmButton ? 1 : 0),
+      ],
+    ));
   }
 
   @override
@@ -208,14 +223,14 @@ class _NDialog extends State<NDialog> {
       children: <Widget>[
         widget.title != null
             ? Container(
-          padding: EdgeInsets.fromLTRB(24, 24, 24, 0),
-          alignment: widget.titleAlign,
-          child: Text(widget.title,
-              style: TextStyle(
-                  fontSize: 16,
-                  color: Color(0xff323233),
-                  fontWeight: FontWeight.w500)),
-        )
+                padding: EdgeInsets.fromLTRB(24, 24, 24, 0),
+                alignment: widget.titleAlign,
+                child: Text(widget.title,
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: widget.titleColor ?? Color(0xff323233),
+                        fontWeight: FontWeight.w500)),
+              )
             : Container(),
         Flexible(
           child: widget.child ??
@@ -224,11 +239,11 @@ class _NDialog extends State<NDialog> {
                     24, widget.title != null ? 12 : 24, 24, 24),
                 child: Text(widget.message,
                     textAlign: widget.messageAlign,
-                    style: TextStyle(fontSize: 14, color: Color(0xff646566))),
+                    style: TextStyle(fontSize: 14, color: widget.contentColor ?? Color(0xff646566))),
               ),
         ),
         (widget.showConfirmButton || widget.showCancelButton)
-            ? SizedBox(height: 1, child: Container(color: Color(0xffebedf0)))
+            ? SizedBox(height: 1, child: Container(color: widget.borderColor ?? Color(0xffebedf0)))
             : Container(),
         (widget.showConfirmButton || widget.showCancelButton)
             ? buildButtons()
@@ -243,10 +258,10 @@ class _NDialog extends State<NDialog> {
             type: MaterialType.transparency,
             child: Center(
               child: ConstrainedBox(
-                constraints: BoxConstraints(maxWidth: width > 321 ? 320 : 280),
+                constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.75),
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: widget.background ?? Colors.white,
                       borderRadius: BorderRadius.circular(16)),
                   child: _buildContent,
                 ),

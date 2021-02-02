@@ -29,8 +29,8 @@ class ActionSheet {
 
   // 选中选项时触发，禁用或加载状态下不会触发
   final Function(
-      ActionSheetItem actionSheetItem, int index, BuildContext context)
-  onSelect;
+          ActionSheetItem actionSheetItem, int index, BuildContext context)
+      onSelect;
 
   // 取消按钮点击时触发
   final Function() onCancel;
@@ -41,29 +41,44 @@ class ActionSheet {
   // 自定义菜单内容
   final Widget child;
 
-  const ActionSheet(
-      {Key key,
-        this.actions,
-        this.title,
-        this.cancelText,
-        this.description,
-        this.round: true,
-        this.roundRadius: 0.0,
-        this.closeIcon,
-        this.closeOnClickOverlay: true,
-        this.onSelect,
-        this.onCancel,
-        this.onClose,
-        this.child});
+  // 背景色
+  final Color background;
+
+  final Color lineColor;
+
+  final Color spacerColor;
+
+  final Color cancelColor;
+
+  const ActionSheet({
+    Key key,
+    this.actions,
+    this.title,
+    this.cancelText,
+    this.description,
+    this.round: true,
+    this.roundRadius: 0.0,
+    this.closeIcon,
+    this.closeOnClickOverlay: true,
+    this.onSelect,
+    this.onCancel,
+    this.onClose,
+    this.child,
+    this.background: Colors.white,
+    this.lineColor,
+    this.spacerColor,
+    this.cancelColor,
+  });
 
   show(BuildContext context) {
     return showModalBottomSheet<String>(
         context: context,
+        backgroundColor: background,
         isDismissible: closeOnClickOverlay,
         isScrollControlled: true,
         shape: RoundedRectangleBorder(
             borderRadius:
-            BorderRadius.vertical(top: Radius.circular(roundRadius))),
+                BorderRadius.vertical(top: Radius.circular(roundRadius))),
         builder: (BuildContext context) {
           return ActionSheetState(this);
         });
@@ -79,14 +94,14 @@ class ActionSheetState extends StatelessWidget {
     return [
       action.loading
           ? SizedBox(
-        width: 16.0,
-        height: 16.0,
-        child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation(Color(0xff323233)),
-          backgroundColor: Colors.white,
-          strokeWidth: 1,
-        ),
-      )
+              width: 16.0,
+              height: 16.0,
+              child: CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation(Color(0xff323233)),
+                backgroundColor: Colors.white,
+                strokeWidth: 1,
+              ),
+            )
           : Container(),
       Text(action.name ?? "",
           style: TextStyle(
@@ -137,7 +152,9 @@ class ActionSheetState extends StatelessWidget {
               },
             ),
           ),
-          i < actions.length ? NDivider(hairline: true) : Container()
+          i < actions.length
+              ? NDivider(hairline: true, lineColor: actionSheet.lineColor)
+              : Container()
         ],
       ));
     }
@@ -156,14 +173,14 @@ class ActionSheetState extends StatelessWidget {
                 children: <Widget>[
                   actionSheet.title != null
                       ? Text(actionSheet.title,
-                      style: TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.bold))
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold))
                       : Container(),
                   SizedBox(height: 4),
                   actionSheet.description != null
                       ? Text(actionSheet.description,
-                      style:
-                      TextStyle(fontSize: 14, color: Color(0xff646566)))
+                          style:
+                              TextStyle(fontSize: 14, color: Color(0xff646566)))
                       : Container(),
                 ],
               ),
@@ -193,11 +210,12 @@ class ActionSheetState extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Container(height: 8, color: Color(0xfff7f8fa)),
+        Container(
+            height: 8, color: actionSheet.spacerColor ?? Color(0xfff7f8fa)),
         DecoratedBox(
           decoration: BoxDecoration(
 //            color: Colors.white,
-          ),
+              ),
           child: Material(
             type: MaterialType.transparency,
             child: InkWell(
@@ -205,7 +223,9 @@ class ActionSheetState extends StatelessWidget {
                 alignment: AlignmentDirectional.center,
                 height: 50,
                 child: Text(actionSheet.cancelText,
-                    style: TextStyle(fontSize: 16, color: Color(0xff323233))),
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: actionSheet.cancelColor ?? Color(0xff323233))),
               ),
               onTap: () {
                 if (actionSheet.onCancel != null) actionSheet.onCancel();
@@ -238,17 +258,17 @@ class ActionSheetState extends StatelessWidget {
 //            ),
           child: SafeArea(
               child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  (actionSheet.title != null || actionSheet.description != null)
-                      ? buildTitleItem(context)
-                      : Container(),
-                  ...buildActionSheetItem(context, actionSheet.actions),
-                  (actionSheet.cancelText != null)
-                      ? buildCancelItem(context)
-                      : Container()
-                ],
-              ))),
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          (actionSheet.title != null || actionSheet.description != null)
+              ? buildTitleItem(context)
+              : Container(),
+          ...buildActionSheetItem(context, actionSheet.actions),
+          (actionSheet.cancelText != null)
+              ? buildCancelItem(context)
+              : Container()
+        ],
+      ))),
     );
   }
 }
@@ -274,9 +294,9 @@ class ActionSheetItem {
 
   ActionSheetItem(
       {this.name,
-        this.subname,
-        this.color: Colors.black,
-        this.loading: false,
-        this.disabled: false,
-        this.value});
+      this.subname,
+      this.color: Colors.black,
+      this.loading: false,
+      this.disabled: false,
+      this.value});
 }
