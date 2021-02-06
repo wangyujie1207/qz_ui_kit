@@ -10,17 +10,21 @@ void showToast(String text, [int seconds = 2]) {
       textStyle: const TextStyle(fontSize: 14, color: Colors.white));
 }
 
-CancelFunc showLoading() {
+CancelFunc showLoading({String text: "正在加载"}) {
   return BotToast.showCustomLoading(
     backgroundColor: Colors.transparent,
     toastBuilder: (void Function() cancelFunc) {
       // return SpinKitCircle(color: Colors.white);
-      return CustomLoadingWidget();
+      return CustomLoadingWidget(text: text);
     },
   );
 }
 
 class CustomLoadingWidget extends StatelessWidget {
+  final String text;
+
+  const CustomLoadingWidget({Key key, this.text}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -44,7 +48,10 @@ class CustomLoadingWidget extends StatelessWidget {
             ),
           ),
           20.w.hb,
-          Text('正在加载', style: TextStyle(fontSize: 30.sp, color: Colors.white),)
+          Text(
+            text,
+            style: TextStyle(fontSize: 30.sp, color: Colors.white),
+          )
         ],
       ),
     );

@@ -16,3 +16,5 @@
     * pickerImage 传入list
     * dialog 黑夜模式支持
     * actionSheet 黑夜模式支持
+## 0.0.8
+     * loading 两次退出 复制 添加text字段
