@@ -18,3 +18,5 @@
     * actionSheet 黑夜模式支持
 ## 0.0.8
      * loading 两次退出 复制 添加text字段
+## 0.0.9
+     * customAppbar 黑夜模式支持修改
