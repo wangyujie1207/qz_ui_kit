@@ -57,7 +57,7 @@ class _ExamplePageState extends State<ExamplePage> {
                       confirmButtonColor: Colors.orange,
                       contentColor: Colors.blue,
                       borderColor: Colors.red,
-                      title: '温馨提示',
+                      // title: '温馨提示',
                       message: '确定要取消该订单?',
                       confirmButtonText: '确定',
                       cancelButtonText: '取消',

@@ -20,3 +20,5 @@
      * loading 两次退出 复制 添加text字段
 ## 0.0.9
      * customAppbar 黑夜模式支持修改
+## 0.1.0
+     * dialog 调整
