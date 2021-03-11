@@ -77,6 +77,28 @@ class _ExamplePageState extends State<ExamplePage> {
                 pickerImage(context, actionList, cancel: '取消', cancelColor: Colors.red);
               },
             ),
+            CustomOutlineButton(
+              // child: Text('test'),
+              title: 'action sheet',
+              onPressed: () async {
+                final List<ActionSheetItem> actionList = [
+                  ActionSheetItem(name: "默认", value: '2', color: Colors.blue),
+                  ActionSheetItem(name: "买盘", value:'0'),
+                  ActionSheetItem(name: "卖盘", value: '1'),
+                ];
+                ActionSheet(
+                    actions: actionList,
+                    roundRadius: 10.w,
+                    cancelText: '取消',
+                    background: Colors.red,
+                    lineColor: Colors.orange,
+                    spacerColor: Colors.green,
+                    onSelect: (action, index, context) {
+                      print(action.value);
+                      print(action.value is int);
+                    }).show(context);
+              },
+            ),
             // CircularProgressIndicator(
             //   valueColor: AlwaysStoppedAnimation(const Color(0xff106636)),
             //   strokeWidth: 2.w,

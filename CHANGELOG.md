@@ -22,3 +22,6 @@
      * customAppbar 黑夜模式支持修改
 ## 0.1.0
      * dialog 调整
+## 0.1.1
+     * circle_splash_icon_button
+     * picker image 支持配色     
