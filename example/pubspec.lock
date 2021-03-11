@@ -337,7 +337,11 @@ packages:
       path: ".."
       relative: true
     source: path
+<<<<<<< HEAD
     version: "0.1.1"
+=======
+    version: "0.1.0"
+>>>>>>> 284f3ccb6abde86b278d2c639bde1c98f3b23f61
   sky_engine:
     dependency: transitive
     description: flutter
