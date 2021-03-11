@@ -33,6 +33,7 @@ class _ExamplePageState extends State<ExamplePage> {
     ActionSheetItem(name: '相机', value: "camera", color: Colors.red),
     ActionSheetItem(name: '相册', value: "gallery"),
   ];
+
   @override
   void initState() {
     super.initState();
@@ -74,7 +75,26 @@ class _ExamplePageState extends State<ExamplePage> {
               // child: Text('test'),
               title: 'picker image',
               onPressed: () async {
-                pickerImage(context, actionList, cancel: '取消', cancelColor: Colors.red);
+                pickerImage(context, actionList,
+                    cancel: '取消', cancelColor: Colors.red);
+              },
+            ),
+            CustomOutlineButton(
+              // child: Text('test'),
+              title: 'picker',
+              onPressed: () async {
+                showPicker(
+                  headerDecoration: BoxDecoration(
+                    color: Colors.red,
+                    border: Border(
+                      bottom: BorderSide(width: 1, color: Colors.blue)
+                    )
+                  ),
+                  backgroundColor: Colors.red,
+                  context: context,
+                  pickerData: ['默认','买家', '卖家'],
+                  onConfirm: (picker, list) {},
+                );
               },
             ),
             CustomOutlineButton(
@@ -83,7 +103,7 @@ class _ExamplePageState extends State<ExamplePage> {
               onPressed: () async {
                 final List<ActionSheetItem> actionList = [
                   ActionSheetItem(name: "默认", value: '2', color: Colors.blue),
-                  ActionSheetItem(name: "买盘", value:'0'),
+                  ActionSheetItem(name: "买盘", value: '0'),
                   ActionSheetItem(name: "卖盘", value: '1'),
                 ];
                 ActionSheet(

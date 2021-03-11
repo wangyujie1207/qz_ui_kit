@@ -13,6 +13,7 @@ showPicker({
   String cancelText,
   String confirmText,
   Color backgroundColor,
+  Decoration headerDecoration,
   Widget title,
 }) {
   Picker picker = Picker(
@@ -29,9 +30,10 @@ showPicker({
     cancelTextStyle: cancelTextStyle ??
         TextStyle(fontSize: 34.sp, color: const Color(0xff999999)),
     confirmTextStyle: confirmTextStyle ??
-        TextStyle(fontSize: 34.sp, color: const Color(0xff106636)),
+        TextStyle(fontSize: 34.sp, color: Theme.of(context).primaryColor),
     cancelText: cancelText ?? '取消',
     confirmText: confirmText ?? '确定',
+    headerDecoration: headerDecoration,
     onConfirm: onConfirm,
   );
   picker.showModal(context);
