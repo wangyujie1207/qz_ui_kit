@@ -18,7 +18,7 @@ Future<File> pickerImage(BuildContext context, List<ActionSheetItem> actionList,
   String res = await ActionSheet(
           actions: actionList,
           cancelText: cancel,
-          roundRadius: roundRadius,
+          roundRadius: roundRadius ?? 10.w,
           background: background,
           lineColor: lineColor,
           spacerColor: spacerColor,
