@@ -25,3 +25,5 @@
 ## 0.1.1
      * circle_splash_icon_button
      * picker image 支持配色     
+## 0.1.2
+     * action sheet delete cancel line

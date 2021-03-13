@@ -201,7 +201,7 @@ class ActionSheetState extends StatelessWidget {
             )
           ],
         ),
-        NDivider()
+        NDivider(hairline: true, lineColor: actionSheet.lineColor)
       ],
     );
   }
@@ -234,7 +234,6 @@ class ActionSheetState extends StatelessWidget {
             ),
           ),
         ),
-        NDivider(hairline: true)
       ],
     );
   }
