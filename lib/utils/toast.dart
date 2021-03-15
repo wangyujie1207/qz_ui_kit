@@ -27,32 +27,35 @@ class CustomLoadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 240.w,
-      height: 90.w,
-      decoration: BoxDecoration(
-        color: const Color(0xff4c4c4c),
-        border: Border.all(width: 1.w, color: const Color(0xffa5a5a5)),
-        borderRadius: BorderRadius.circular(8.w),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            width: 30.w,
-            height: 30.w,
-            child: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation(Colors.white),
-              strokeWidth: 2.w,
+    return UnconstrainedBox(
+      child: Container(
+        height: 90.w,
+        constraints: BoxConstraints(minWidth: 240.w),
+        padding: EdgeInsets.symmetric(horizontal: 20.w),
+        decoration: BoxDecoration(
+          color: const Color(0xff4c4c4c),
+          border: Border.all(width: 1.w, color: const Color(0xffa5a5a5)),
+          borderRadius: BorderRadius.circular(8.w),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              width: 30.w,
+              height: 30.w,
+              child: CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation(Colors.white),
+                strokeWidth: 2.w,
+              ),
             ),
-          ),
-          20.w.hb,
-          Text(
-            text,
-            style: TextStyle(fontSize: 30.sp, color: Colors.white),
-          )
-        ],
+            20.w.hb,
+            Text(
+              text,
+              style: TextStyle(fontSize: 30.sp, color: Colors.white),
+            )
+          ],
+        ),
       ),
     );
   }

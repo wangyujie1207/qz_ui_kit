@@ -27,3 +27,5 @@
      * picker image 支持配色     
 ## 0.1.2
      * action sheet delete cancel line
+## 0.1.3
+     * toast ui fixbug
